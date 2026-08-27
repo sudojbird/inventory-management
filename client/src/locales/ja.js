@@ -96,6 +96,7 @@ export default {
     totalValue: '総価値',
     lowStockItems: '在庫僅少品目',
     warehouses: '倉庫',
+    exportCsv: 'CSVエクスポート',
     table: {
       sku: 'SKU',
       itemName: '品目名',
@@ -216,7 +217,7 @@ export default {
     placeOrder: '発注する',
     funded: '手配済み',
     partial: '一部手配',
-    notFunded: '未手配',
+    unfunded: '未手配',
     unitsShort: '翌月{count}単位不足',
     partialDetail: '{needed}単位中{funded}単位',
     orderPlaced: '注文{orderNumber}を送信しました。納入予定日は{date}です。',

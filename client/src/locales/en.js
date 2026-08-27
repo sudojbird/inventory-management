@@ -96,6 +96,7 @@ export default {
     totalValue: 'Total Value',
     lowStockItems: 'Low Stock Items',
     warehouses: 'Warehouses',
+    exportCsv: 'Export CSV',
     table: {
       sku: 'SKU',
       itemName: 'Item Name',
@@ -216,7 +217,7 @@ export default {
     placeOrder: 'Place Order',
     funded: 'Funded',
     partial: 'Partial',
-    notFunded: 'Not Funded',
+    unfunded: 'Not Funded',
     unitsShort: '{count} units short next month',
     partialDetail: '{funded} of {needed} units',
     orderPlaced: 'Order {orderNumber} submitted, expected {date}.',
