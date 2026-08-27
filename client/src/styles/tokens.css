@@ -1,0 +1,334 @@
+/*
+ * Design tokens for the SaaS shell.
+ * Imported first in main.js so :root vars resolve before any component styles.
+ *
+ * Values name the palette the app already used (audited from the previous
+ * hardcoded hex) — this layer exists to make spacing, radii, and elevation
+ * consistent, not to rebrand. Accent stays #2563eb.
+ */
+
+:root {
+  /* --- Neutrals (slate) --- */
+  --color-bg:            #f8fafc;
+  --color-surface:       #ffffff;
+  --color-surface-sunken: #f1f5f9;
+  --color-surface-hover: #f8fafc;
+
+  --color-border:        #e2e8f0;
+  --color-border-strong: #cbd5e1;
+
+  --color-text:          #0f172a;
+  --color-text-secondary:#475569;
+  --color-text-muted:    #64748b;
+  --color-text-inverse:  #f8fafc;
+
+  /* --- Accent --- */
+  --color-accent:        #2563eb;
+  --color-accent-hover:  #1d4ed8;
+  --color-accent-subtle: #eff6ff;
+  --color-accent-border: #bfdbfe;
+
+  /* --- Status --- */
+  --color-success:       #059669;
+  --color-success-bg:    #d1fae5;
+  --color-success-text:  #065f46;
+
+  --color-warning:       #ea580c;
+  --color-warning-bg:    #fed7aa;
+  --color-warning-text:  #92400e;
+
+  --color-danger:        #dc2626;
+  --color-danger-bg:     #fecaca;
+  --color-danger-text:   #991b1b;
+
+  --color-info:          #2563eb;
+  --color-info-bg:       #dbeafe;
+  --color-info-text:     #1e40af;
+
+  /* --- Chart series. Views draw custom SVG charts with their own hardcoded
+     hues; map them here so recoloring is a token swap, not a per-chart edit.
+     Ordered for categorical use — do not reorder, series identity depends on it. --- */
+  --chart-1: #3b82f6;
+  --chart-2: #10b981;
+  --chart-3: #f59e0b;
+  --chart-4: #8b5cf6;
+  --chart-5: #ef4444;
+  --chart-6: #06b6d4;
+  --chart-grid: #e2e8f0;
+  --chart-axis-text: #64748b;
+
+  /* --- Sidebar surface ---
+     Dark rail on light content is the SaaS convention and gives the shell an
+     obvious anchor. For a light sidebar instead, set --sidebar-bg to
+     var(--color-surface) and flip the three text tokens to the neutral ramp. */
+  --sidebar-bg:          #0f172a;
+  --sidebar-text:        #94a3b8;
+  --sidebar-text-active: #ffffff;
+  --sidebar-item-active: #1e293b;
+  --sidebar-border:      #1e293b;
+
+  /* --- Spacing: 4px base scale.
+     Every margin, padding, and gap in the redesigned UI comes from here. --- */
+  --space-1: 0.25rem;   /*  4px */
+  --space-2: 0.5rem;    /*  8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+
+  /* --- Typography --- */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+               Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
+
+  --text-xs:   0.75rem;   /* 12px - table headers, section labels */
+  --text-sm:   0.8125rem; /* 13px - secondary text, badges */
+  --text-base: 0.875rem;  /* 14px - body, table cells */
+  --text-md:   0.9375rem; /* 15px - nav items, descriptions */
+  --text-lg:   1.125rem;  /* 18px - card titles */
+  --text-xl:   1.5rem;    /* 24px - page titles */
+  --text-2xl:  2rem;      /* 32px - stat values */
+
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  --leading-tight: 1.25;
+  --leading-normal: 1.5;
+
+  --tracking-tight: -0.025em;
+  --tracking-wide: 0.05em;
+
+  /* --- Radii --- */
+  --radius-sm: 4px;
+  --radius:    6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  /* --- Elevation. Keep it restrained; borders do most of the separation work. --- */
+  --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.04);
+  --shadow:    0 1px 3px 0 rgba(15, 23, 42, 0.06), 0 1px 2px -1px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 12px 24px -6px rgba(15, 23, 42, 0.12);
+
+  /* --- Layout --- */
+  --sidebar-width: 260px;
+  --sidebar-width-collapsed: 68px;
+  --topbar-height: 56px;
+  --content-max-width: 1440px;
+
+  /* --- Motion. Respect prefers-reduced-motion below. --- */
+  --transition-fast: 120ms ease;
+  --transition:      180ms ease;
+
+  /* --- Focus --- */
+  --focus-ring: 0 0 0 3px rgba(37, 99, 235, 0.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-fast: 0ms;
+    --transition: 0ms;
+  }
+}
+
+/* --- Base reset --- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  background: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Visible focus on every interactive element — checklist item, not optional. */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: var(--radius-sm);
+}
+
+/* --- Shared surfaces. Views use these instead of bespoke per-view variants. --- */
+
+.page-header {
+  margin-bottom: var(--space-6);
+}
+
+.page-header h2 {
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text);
+  margin-bottom: var(--space-1);
+}
+
+.page-header p {
+  font-size: var(--text-md);
+  color: var(--color-text-muted);
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-5);
+  margin-bottom: var(--space-5);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.card-title {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+
+.stat-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-5);
+  transition: box-shadow var(--transition), border-color var(--transition);
+}
+
+.stat-card:hover {
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-md);
+}
+
+.stat-label {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.stat-value {
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text);
+  line-height: var(--leading-tight);
+}
+
+.stat-card.success .stat-value { color: var(--color-success); }
+.stat-card.warning .stat-value { color: var(--color-warning); }
+.stat-card.danger  .stat-value { color: var(--color-danger); }
+.stat-card.info    .stat-value { color: var(--color-info); }
+
+/* --- Tables --- */
+
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background: var(--color-surface-sunken);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+th {
+  text-align: left;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+td {
+  padding: var(--space-3);
+  border-top: 1px solid var(--color-surface-sunken);
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+}
+
+tbody tr {
+  transition: background-color var(--transition-fast);
+}
+
+tbody tr:hover {
+  background: var(--color-surface-hover);
+}
+
+/* --- Badges --- */
+
+.badge {
+  display: inline-block;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  white-space: nowrap;
+}
+
+.badge.success, .badge.increasing { background: var(--color-success-bg); color: var(--color-success-text); }
+.badge.warning, .badge.medium     { background: var(--color-warning-bg); color: var(--color-warning-text); }
+.badge.danger,  .badge.decreasing,
+.badge.high                       { background: var(--color-danger-bg);  color: var(--color-danger-text); }
+.badge.info,    .badge.low        { background: var(--color-info-bg);    color: var(--color-info-text); }
+.badge.stable                     { background: var(--color-surface-sunken); color: var(--color-text-secondary); }
+
+/* --- States --- */
+
+.loading {
+  text-align: center;
+  padding: var(--space-12);
+  color: var(--color-text-muted);
+  font-size: var(--text-md);
+}
+
+.error {
+  background: #fef2f2;
+  border: 1px solid var(--color-danger-bg);
+  color: var(--color-danger-text);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  margin: var(--space-4) 0;
+  font-size: var(--text-md);
+}
