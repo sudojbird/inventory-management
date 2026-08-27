@@ -6,8 +6,20 @@ export default {
     orders: '注文',
     finance: '財務',
     demandForecast: '需要予測',
+    reports: 'パフォーマンスレポート',
+    restocking: '補充',
     companyName: '触媒コンポーネンツ',
-    subtitle: '在庫管理システム'
+    subtitle: '在庫管理システム',
+    sections: {
+      operations: '業務',
+      insights: 'インサイト'
+    },
+    sidebar: {
+      expand: 'サイドバーを展開',
+      collapse: 'サイドバーを折りたたむ',
+      openMenu: 'メニューを開く',
+      closeMenu: 'メニューを閉じる'
+    }
   },
 
   // Dashboard
@@ -112,6 +124,9 @@ export default {
     onTimeDelivery: '定時配達',
     itemsCount: '{count}件',
     quantity: '数量',
+    submittedOrders: '送信済み注文',
+    noSubmittedOrders: 'このセッションで送信した注文はありません。補充タブから作成できます。',
+    leadTimeDays: '{days}日',
     table: {
       orderNumber: '注文番号',
       orderId: '注文ID',
@@ -125,7 +140,9 @@ export default {
       totalValue: '合計金額',
       status: 'ステータス',
       expectedDelivery: '予定配達日',
-      actualDelivery: '実際の配達日'
+      actualDelivery: '実際の配達日',
+      leadTime: 'リードタイム',
+      budget: '予算'
     }
   },
 
@@ -188,6 +205,50 @@ export default {
     }
   },
 
+  // Restocking
+  restocking: {
+    title: '補充',
+    description: '需要予測に基づく予算制約付きの補充計画',
+    budgetTitle: '利用可能予算',
+    budgetHint: 'この補充注文に使用できる予算をドラッグして設定',
+    leadTimeNote: 'すべての補充注文に{days}日の調達リードタイムを適用します。',
+    recommendations: '補充推奨',
+    placeOrder: '発注する',
+    funded: '手配済み',
+    partial: '一部手配',
+    notFunded: '未手配',
+    unitsShort: '翌月{count}単位不足',
+    partialDetail: '{needed}単位中{funded}単位',
+    orderPlaced: '注文{orderNumber}を送信しました。納入予定日は{date}です。',
+    viewInOrders: '注文タブで表示',
+    zeroBudget: '予算を0より大きく設定してください。',
+    budgetTooSmall: '予算が少なすぎて最安の品目すら手配できません。',
+    fullyFunded: '予算はすべての予測不足を充足します。{amount}が未割当です。',
+    noneShort: '補充は不要です。表示中の品目はすべて予測需要を満たしています。',
+    noForecastData: '選択された場所とカテゴリの需要予測データがありません。',
+    stats: {
+      itemsShort: '不足品目数',
+      totalNeed: '必要額合計',
+      budgetAllocated: '予算割当額',
+      itemsFunded: '手配品目数',
+      adequatelyStocked: '在庫充足',
+      unallocated: '未割当額'
+    },
+    table: {
+      sku: 'SKU',
+      itemName: '品目名',
+      warehouse: '倉庫',
+      onHand: '在庫数',
+      forecast: '予測需要',
+      unitsShort: '不足数',
+      orderQty: '発注数',
+      unitCost: '単価',
+      lineTotal: '金額',
+      reason: '理由',
+      status: 'ステータス'
+    }
+  },
+
   // Filters
   filters: {
     timePeriod: '期間',
@@ -204,6 +265,7 @@ export default {
     shipped: '出荷済み',
     processing: '処理中',
     backordered: 'バックオーダー',
+    submitted: '送信済み',
     inStock: '在庫あり',
     lowStock: '在庫僅少',
     adequate: '適量'
@@ -328,6 +390,13 @@ export default {
 
   // Product Names
   productNames: {
+    'Industrial Widget Type A': '産業用ウィジェットタイプA',
+    'Steel Bearing Assembly': 'スチールベアリング組立',
+    'High-Temperature Gasket': '高温用ガスケット',
+    'Electric Motor 5HP': '電動モータ5HP',
+    'Oil Filter Cartridge': 'オイルフィルターカートリッジ',
+    'Pressure Relief Valve': '圧力リリーフバルブ',
+    'Logic Controller Board': 'ロジックコントローラ基板',
     'Single Layer PCB Assembly': '単層PCB組立',
     'Dual Layer PCB Assembly': '二層PCB組立',
     'Multi Layer PCB Assembly': '多層PCB組立',
@@ -364,6 +433,7 @@ export default {
 
   // Customer Names
   customerNames: {
+    'Internal Restock': '社内補充',
     'MegaCorp Industries': 'メガコープ工業',
     'Elite Systems Corp': 'エリートシステムズ',
     'Horizon Technologies': 'ホライズン技術',

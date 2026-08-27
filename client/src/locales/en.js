@@ -6,8 +6,20 @@ export default {
     orders: 'Orders',
     finance: 'Finance',
     demandForecast: 'Demand Forecast',
+    reports: 'Performance Reports',
+    restocking: 'Restocking',
     companyName: 'Catalyst Components',
-    subtitle: 'Inventory Management System'
+    subtitle: 'Inventory Management System',
+    sections: {
+      operations: 'Operations',
+      insights: 'Insights'
+    },
+    sidebar: {
+      expand: 'Expand sidebar',
+      collapse: 'Collapse sidebar',
+      openMenu: 'Open menu',
+      closeMenu: 'Close menu'
+    }
   },
 
   // Dashboard
@@ -112,6 +124,9 @@ export default {
     onTimeDelivery: 'On-Time Delivery',
     itemsCount: '{count} items',
     quantity: 'Qty',
+    submittedOrders: 'Submitted Orders',
+    noSubmittedOrders: 'No orders submitted this session. Create one from the Restocking tab.',
+    leadTimeDays: '{days} days',
     table: {
       orderNumber: 'Order Number',
       orderId: 'Order ID',
@@ -125,7 +140,9 @@ export default {
       totalValue: 'Total Value',
       status: 'Status',
       expectedDelivery: 'Expected Delivery',
-      actualDelivery: 'Actual Delivery'
+      actualDelivery: 'Actual Delivery',
+      leadTime: 'Lead Time',
+      budget: 'Budget'
     }
   },
 
@@ -188,6 +205,50 @@ export default {
     }
   },
 
+  // Restocking
+  restocking: {
+    title: 'Restocking',
+    description: 'Plan budget-constrained restock orders from the demand forecast',
+    budgetTitle: 'Available Budget',
+    budgetHint: 'Drag to set the budget available for this restock order',
+    leadTimeNote: 'All restock orders use a {days}-day supplier lead time.',
+    recommendations: 'Restock Recommendations',
+    placeOrder: 'Place Order',
+    funded: 'Funded',
+    partial: 'Partial',
+    notFunded: 'Not Funded',
+    unitsShort: '{count} units short next month',
+    partialDetail: '{funded} of {needed} units',
+    orderPlaced: 'Order {orderNumber} submitted, expected {date}.',
+    viewInOrders: 'View in Orders',
+    zeroBudget: 'Set a budget above zero to fund restock recommendations.',
+    budgetTooSmall: 'Budget is too small to fund even the cheapest item.',
+    fullyFunded: 'Budget covers every forecasted shortfall. {amount} remains unallocated.',
+    noneShort: 'No restocking needed - on-hand stock covers the forecast for every item in view.',
+    noForecastData: 'No demand forecast data for the selected location and category.',
+    stats: {
+      itemsShort: 'Items Short',
+      totalNeed: 'Total Need',
+      budgetAllocated: 'Budget Allocated',
+      itemsFunded: 'Items Funded',
+      adequatelyStocked: 'Adequately Stocked',
+      unallocated: 'Unallocated'
+    },
+    table: {
+      sku: 'SKU',
+      itemName: 'Item Name',
+      warehouse: 'Warehouse',
+      onHand: 'On Hand',
+      forecast: 'Forecast',
+      unitsShort: 'Units Short',
+      orderQty: 'Order Qty',
+      unitCost: 'Unit Cost',
+      lineTotal: 'Line Total',
+      reason: 'Reason',
+      status: 'Status'
+    }
+  },
+
   // Filters
   filters: {
     timePeriod: 'Time Period',
@@ -204,6 +265,7 @@ export default {
     shipped: 'Shipped',
     processing: 'Processing',
     backordered: 'Backordered',
+    submitted: 'Submitted',
     inStock: 'In Stock',
     lowStock: 'Low Stock',
     adequate: 'Adequate'
